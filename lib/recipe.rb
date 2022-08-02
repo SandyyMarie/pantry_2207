@@ -14,4 +14,12 @@ class Recipe
         @ingredients_required[ingredient] += amount
         ingredients << ingredient
     end
+
+    def total_calories
+        total = 0
+        @ingredients_required.each do |ingredient|
+            total += ((ingredient[0].calories) * ingredient[1])
+        end
+        total
+    end
 end

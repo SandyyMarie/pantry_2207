@@ -12,6 +12,6 @@ RSpec.describe Ingredient do
     it 'can return ingredient attributes' do
         expect(@ingredient1.name).to eq("Cheese")
         expect(@ingredient1.unit).to eq("oz")
-        expect(@ingredient.calories).to eq(50)
+        expect(@ingredient1.calories).to eq(50)
     end
 end

@@ -28,4 +28,13 @@ RSpec.describe Pantry do
         expect(@pantry.stock_check(@ingredient1)).to eq(15)
         expect(@pantry.stock_check(@ingredient2)).to eq(7)
     end
+
+    it 'can return if theres not enough ingredients for a given recipe' do
+        expect(@pantry.enough_ingredients_for?(@recipe1)).to eq(false)
+    end
+
+    it 'can return that there is enough ingredients for a given recipe' do
+        @pantry.restock(ingredient2, 8)
+        expect(@pantry.enough_ingredients_for?(@recipe1)).to eq(true)
+    end
 end

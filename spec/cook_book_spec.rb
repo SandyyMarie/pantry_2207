@@ -22,4 +22,8 @@ RSpec.describe CookBook do
         @cookbook.add_recipe(@recipe2)
         expect(@cookbook.recipes.count).to eq(2)
     end
+
+    it 'can return the highest calorie meal' do
+        expect(@cookbook.highest_calorie_meal).to be_a(Recipe) #can rewrite
+    end
 end

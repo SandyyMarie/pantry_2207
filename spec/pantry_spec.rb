@@ -1,10 +1,14 @@
 require './lib/ingredient'
 require './lib/pantry'
+require './lib/recipe'
 
 RSpec.describe Pantry do
     before :each do 
         @ingredient1 = Ingredient.new({name: "Cheese", unit: "oz", calories: 50})
         @ingredient2 = Ingredient.new({name: "Macaroni", unit: "oz", calories: 200})
+        @recipe1 = Recipe.new("Mac and Cheese")
+        @recipe1.add_ingredient(@ingredient1, 2)
+        @recipe1.add_ingredient(@ingredient2, 8)
         @pantry = Pantry.new
     end
 
@@ -34,7 +38,10 @@ RSpec.describe Pantry do
     end
 
     it 'can return that there is enough ingredients for a given recipe' do
-        @pantry.restock(ingredient2, 8)
+        @pantry.restock(@ingredient1, 5)
+        @pantry.restock(@ingredient1, 10)
+        @pantry.restock(@ingredient2, 7)
+        @pantry.restock(@ingredient2, 1)
         expect(@pantry.enough_ingredients_for?(@recipe1)).to eq(true)
     end
 end
